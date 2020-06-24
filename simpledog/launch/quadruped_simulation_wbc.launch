@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<launch>
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find simpledog)/worlds/quadruped_simulation.world"/>
+  </include>
+
+<!-- Load controller configuration -->
+<rosparam command="load" file="$(find simpledog)/config/control.yaml" />
+
+<rosparam file="$(find balance_controller)/config/controller_gains_gazebo.yaml" command="load" />
+
+<node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen"
+      args=" --stopped base_balance_controller"/>
+
+
+
+</launch>
