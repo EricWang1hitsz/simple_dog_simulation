@@ -144,8 +144,8 @@ void FakePose::modelStatesCallback(const gazebo_msgs::ModelStates::ConstPtr& mod
     ROS_INFO("Recieved a model states");
 //    geometry_msgs::Pose base_pose = *(modelStatesMsg->pose.end());
 //    geometry_msgs::Twist base_twist =*(modelStatesMsg->twist.end());
-      geometry_msgs::Pose base_pose = modelStatesMsg->pose[10];
-      geometry_msgs::Twist base_twist =modelStatesMsg->twist[10];
+      geometry_msgs::Pose base_pose = modelStatesMsg->pose[1];
+      geometry_msgs::Twist base_twist =modelStatesMsg->twist[1];
       base_twist.linear.x *= real_time_factor;
       base_twist.linear.y *= real_time_factor;
       base_twist.linear.z *= real_time_factor;
