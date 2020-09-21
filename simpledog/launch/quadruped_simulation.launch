@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
 
-  <arg name="world_name" default="worlds/empty.world"/>
+  <!-- <arg name="world_name" defau000000000lt="worlds/empty.world"/> -->
 
   <arg name="laser_enabled" default="true"/>
   <arg name="kinect_enabled" default="true"/>
@@ -33,8 +33,9 @@
 
 
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name="world_name" value="$(find simpledog)/worlds/quadruped_simulation.world"/>
-    <!--<arg name="world_name" value="worlds/empty.world"/>-->
+    <!-- <arg name="world_name" value="$(find simpledog)/worlds/quadruped_simulation.world"/> -->
+    <arg name="world_name" value="$(find simpledog)/worlds/terrain.world"/>
+    <!-- <arg name="world_name" value="worlds/empty.world"/> -->
     <arg name="paused" value="false"/>
     <arg name="use_sim_time" value="false"/>
     <arg name="gui" value="true"/>
@@ -62,7 +63,7 @@
 <!-- Spawn controllers -->
 <node name="base_controller_spawner" pkg="controller_manager" type="spawner"
       args="simpledog_joint_publisher
-            all_joints_position_effort_group_controller" />
+            all_joints_position_effort_group_controller"/>
             <!-- front_left_1_joint_position_controller
             front_left_2_joint_position_controller
             front_left_3_joint_position_controller
@@ -78,9 +79,8 @@
 <rosparam file="$(find balance_controller)/config/controller_gains_gazebo.yaml" command="load" />
 
 <node name="base_controller_spawner_stopped" pkg="controller_manager" type="spawner"
-      args=" --stopped
-                      whole_body_controller
-		      all_joints_position_group_controller
+      args=" --stopped base_balance_controller
+                      all_joints_position_group_controller
                       all_joints_velocity_group_controller
                       all_joints_effort_group_controller" />
 

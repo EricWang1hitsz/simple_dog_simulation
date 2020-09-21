@@ -107,6 +107,6 @@ int main(int argc, char **argv)
 
         ros::spinOnce();
         rate.sleep();
-
+//    ros::shutdown();
     }
 }

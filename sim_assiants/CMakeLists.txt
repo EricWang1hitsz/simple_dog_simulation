@@ -17,6 +17,7 @@ find_package(catkin REQUIRED
     tf
     free_gait_msgs
     gazebo_msgs
+    message_generation
     )
 
 
@@ -122,6 +123,7 @@ catkin_package(
   tf
   free_gait_msgs
   gazebo_msgs
+  message_runtime
   DEPENDS
   Boost
 )
@@ -164,6 +166,8 @@ add_executable(bumper_sensor_filter_node src/bumper_sensor_filter.cpp)
 ## Add cmake target dependencies of the executable
 ## same as for the library above
 # add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(${PROJECT_NAME}_library ${${PROJECT_NAME}_EXPORTED_TARGETS})
+add_dependencies(bumper_sensor_filter_node ${${PROJECT_NAME}_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
  target_link_libraries(joint_states_to_gazebo_controllers_node
