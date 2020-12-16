@@ -182,7 +182,7 @@ void FakePose::modelStatesCallback(const gazebo_msgs::ModelStates::ConstPtr& mod
     odom_to_footprint.setOrigin(tf::Vector3(base_pose.position.x,
                                 base_pose.position.y,
                                 0));
-
+    // Strive4G8ness: footprint orientation should be the same with the odom?
     footprint_to_base.setRotation(tf::createQuaternionFromRPY(roll, pitch, 0.0));
     footprint_to_base.setOrigin(tf::Vector3(0,0,base_pose.position.z));
 
